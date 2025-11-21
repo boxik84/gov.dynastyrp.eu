@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynasty Government Web</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Government Dynasty</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .main-title {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .main-title .white {
+            color: #ffffff;
+        }
+        
+        .main-title .green {
+            color: #3dd9b8;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #cccccc;
+            font-weight: 400;
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
-  <h1 class="text-4xl font-bold tracking-wide text-[#20c997]">
-    Dynasty Government WEB
-  </h1>
+<body>
+    <h1 class="main-title">
+        <span class="white">GOVERNMENT</span> <span class="green">DYNASTY</span>
+    </h1>
+    <p class="subtitle">Stránka funguje.</p>
 </body>
 </html>
