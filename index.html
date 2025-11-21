@@ -1,62 +1,954 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Government Dynasty</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: #0a0a0a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        .main-title {
-            font-size: 5rem;
-            font-weight: 900;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-        
-        .main-title .white {
-            color: #ffffff;
-        }
-        
-        .main-title .green {
-            color: #3dd9b8;
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            color: #cccccc;
-            font-weight: 400;
-        }
-        
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 3rem;
+  <meta charset="UTF-8" />
+  <title>San Andreas – Legislative Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            serif: ["Source Serif Pro", "serif"],
+          },
+          colors: {
+            main: "#20c997",
+            bg: "#141321",
+          },
+          boxShadow: {
+            glass: "0 18px 45px rgba(0,0,0,0.45)",
+          },
+          keyframes: {
+            fadeSlide: {
+              '0%': { opacity: 0, transform: 'translateY(15px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' }
             }
-            .subtitle {
-                font-size: 1.2rem;
-            }
+          },
+          animation: {
+            fadeSlide: 'fadeSlide 0.35s ease-out'
+          }
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    .glass {
+      background: rgba(21, 23, 43, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
 </head>
-<body>
-    <h1 class="main-title">
-        <span class="white">GOVERNMENT</span> <span class="green">DYNASTY</span>
+<body class="bg-bg text-gray-100 font-sans antialiased">
+
+<!-- ================== HERO ================== -->
+<section class="w-full py-14 bg-gradient-to-b from-[#1d1f33] to-[#0b0c14] border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-[11px] uppercase tracking-[0.25em] text-main/80">
+      Project Dynasty • Government Services
+    </p>
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-wide text-main drop-shadow-xl">
+      STATE OF SAN ANDREAS
     </h1>
-    <p class="subtitle">Stránka funguje.</p>
+    <p class="mt-4 text-gray-300 text-sm md:text-base max-w-2xl mx-auto">
+      Official Legislative &amp; Judiciary Portal pro zákony, soudní procedury a výkonnou moc státu San Andreas.
+    </p>
+  </div>
+</section>
+
+<!-- ================== MAIN LAYOUT ================== -->
+<div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="glass rounded-2xl p-6 shadow-glass h-fit">
+
+    <h2 class="text-main font-semibold text-lg mb-4">Navigace</h2>
+    <ul class="space-y-3 text-sm">
+      <li><a class="hover:text-main transition" href="#">Government Overview</a></li>
+      <li><a class="hover:text-main transition" href="#">DOJ Portal</a></li>
+      <li><a class="hover:text-main transition" href="#">Laws Library</a></li>
+      <li><a class="hover:text-main transition" href="#">Executive Orders</a></li>
+      <li><a class="hover:text-main transition" href="#">State Congress</a></li>
+    </ul>
+
+    <div class="mt-8 border-t border-white/10 pt-6">
+      <h3 class="text-main font-semibold mb-3 text-sm">Status zákona</h3>
+      <ul class="text-xs space-y-2 text-gray-300">
+        <li class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          <span>Platný</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-orange-400"></span>
+          <span>Pozastavený</span>
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+          <span>Neplatný</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-8 border-t border-white/10 pt-6">
+      <h2 class="text-main font-semibold text-lg mb-3">Oficiální odkazy</h2>
+      <ul class="space-y-3 text-sm">
+        <li>
+          <a class="flex gap-2 items-center hover:text-main transition" href="#">
+            <span class="w-2 h-2 bg-main rounded-full"></span> Law Discord
+          </a>
+        </li>
+        <li>
+          <a class="flex gap-2 items-center hover:text-main transition" href="#">
+            <span class="w-2 h-2 bg-main rounded-full"></span> Dynasty Main Discord
+          </a>
+        </li>
+        <li>
+          <a class="flex gap-2 items-center hover:text-main transition" href="#">
+            <span class="w-2 h-2 bg-main rounded-full"></span> Dynasty Portal
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="md:col-span-3 space-y-8">
+
+    <!-- Top row: search + filters -->
+    <section class="glass rounded-2xl p-4 md:p-5 shadow-glass">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <!-- search -->
+        <div class="flex-1">
+          <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+            Vyhledávání v textech zákonů
+          </label>
+          <div class="relative">
+            <input
+              id="lawSearch"
+              type="text"
+              placeholder="Zadej část textu, paragraf, klíčové slovo..."
+              class="w-full rounded-xl bg-[#151728] border border-gray-700 focus:border-main focus:ring-2 focus:ring-main/40 outline-none px-4 py-2.5 text-xs md:text-sm placeholder:text-gray-500"
+            />
+            <button
+              id="lawSearchButton"
+              class="absolute inset-y-0 right-1 my-1 px-3 rounded-lg bg-main text-[11px] font-semibold text-bg hover:bg-main/90 transition">
+              Hledat
+            </button>
+          </div>
+          <p class="mt-1 text-[11px] text-gray-500">
+            Vyhledávání probíhá v názvech, popisech i plném textu všech zákonů.
+          </p>
+        </div>
+
+        <!-- category filters -->
+        <div class="flex flex-wrap gap-2 md:w-64 justify-start md:justify-end">
+          <button
+            class="filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold border border-main bg-main/20 text-main data-[active='0']:bg-transparent data-[active='0']:border-gray-600 data-[active='0']:text-gray-300 transition"
+            data-category="licensing"
+            data-active="1">
+            Licensing &amp; Firearms
+          </button>
+          <button
+            class="filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold border border-main bg-main/20 text-main data-[active='0']:bg-transparent data-[active='0']:border-gray-600 data-[active='0']:text-gray-300 transition"
+            data-category="judiciary"
+            data-active="1">
+            Judiciary
+          </button>
+          <button
+            class="filter-btn px-3 py-1.5 rounded-full text-[11px] font-semibold border border-main bg-main/20 text-main data-[active='0']:bg-transparent data-[active='0']:border-gray-600 data-[active='0']:text-gray-300 transition"
+            data-category="executive"
+            data-active="1">
+            Executive
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID zákonů -->
+    <section id="lawCards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Weapon Licensing Act -->
+      <article
+        class="law-card glass rounded-2xl p-5 shadow-glass cursor-pointer hover:-translate-y-1 hover:shadow-main/40 transition-all"
+        data-law-id="wla"
+        data-category="licensing">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h3 class="font-semibold text-sm md:text-base">
+              SAN ANDREAS WEAPON LICENSING ACT
+            </h3>
+            <p class="text-main text-[11px] mt-0.5">(2025)</p>
+          </div>
+          <!-- status = zelená (Platný) -->
+          <span class="w-3 h-3 rounded-full bg-green-500" title="Platný"></span>
+        </div>
+        <p class="text-[12px] text-gray-300 mt-3">
+          Zákon o držení, vydávání a odebrání zbrojních licencí na území státu San Andreas.
+        </p>
+        <p class="mt-3 text-[11px] text-gray-400">
+          Navrhl: Head Representative Artur Morgan<br>
+          Schválil: Governor Edward Langford, J.D., M.A.
+        </p>
+        <button
+          class="mt-4 inline-flex items-center px-3 py-1.5 rounded-lg border border-main text-main text-[11px] font-semibold uppercase tracking-wide hover:bg-main/10 transition"
+          onclick="openLaw('wla')">
+          Zobrazit zákon
+        </button>
+      </article>
+
+      <!-- Court Procedure Act -->
+      <article
+        class="law-card glass rounded-2xl p-5 shadow-glass cursor-pointer hover:-translate-y-1 hover:shadow-main/40 transition-all"
+        data-law-id="court"
+        data-category="judiciary">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h3 class="font-semibold text-sm md:text-base">
+              SAN ANDREAS COURT PROCEDURE ACT
+            </h3>
+            <p class="text-main text-[11px] mt-0.5">(2025)</p>
+          </div>
+          <!-- status = oranžová (Pozastavený) -->
+          <span class="w-3 h-3 rounded-full bg-green-500" title="Platný"></span>
+        </div>
+        <p class="text-[12px] text-gray-300 mt-3">
+          Zákon o soudních řízeních a procesních pravidlech státních soudů v San Andreas.
+        </p>
+        <p class="mt-3 text-[11px] text-gray-400">
+          Navrhl: Head Representative Artur Morgan<br>
+          Schválil: Governor Edward Langford, J.D., M.A.
+        </p>
+        <button
+          class="mt-4 inline-flex items-center px-3 py-1.5 rounded-lg border border-main text-main text-[11px] font-semibold uppercase tracking-wide hover:bg-main/10 transition"
+          onclick="openLaw('court')">
+          Zobrazit zákon
+        </button>
+      </article>
+
+      <!-- Gubernatorial Succession Act -->
+      <article
+        class="law-card glass rounded-2xl p-5 shadow-glass cursor-pointer hover:-translate-y-1 hover:shadow-main/40 transition-all"
+        data-law-id="succession"
+        data-category="executive">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h3 class="font-semibold text-sm md:text-base">
+              SAN ANDREAS GUBERNATORIAL SUCCESSION ACT
+            </h3>
+            <p class="text-main text-[11px] mt-0.5">(2025)</p>
+          </div>
+          <!-- status = červená (Neplatný) – můžeš změnit -->
+          <span class="w-3 h-3 rounded-full bg-green-500" title="Platný"></span>
+        </div>
+        <p class="text-[12px] text-gray-300 mt-3">
+          Zákon o nástupnictví Guvernéra a zajištění kontinuity výkonné moci.
+        </p>
+        <p class="mt-3 text-[11px] text-gray-400">
+          Navrhl: Head Representative Artur Morgan<br>
+          Schválil: Governor Edward Langford, J.D., M.A.
+        </p>
+        <button
+          class="mt-4 inline-flex items-center px-3 py-1.5 rounded-lg border border-main text-main text-[11px] font-semibold uppercase tracking-wide hover:bg-main/10 transition"
+          onclick="openLaw('succession')">
+          Zobrazit zákon
+        </button>
+      </article>
+    </section>
+
+    <!-- Divider -->
+    <div class="bg-gradient-to-r from-transparent via-main/40 to-transparent h-px my-2"></div>
+
+    <!-- DETAIL ZÁKONA -->
+    <section id="lawDetail" class="space-y-4 text-sm"></section>
+
+  </main>
+</div>
+
+<!-- ================== FOOTER ================== -->
+<footer class="mt-10 py-10 bg-gradient-to-b from-[#11121a] to-[#06070b] border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
+    <div>
+      <h3 class="text-main font-bold text-lg mb-3">STATE OF SAN ANDREAS</h3>
+      <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+        Project Dynasty – Oficiální portál pro zákony, soudní řízení, výkonnou moc a státní správu státu San Andreas.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-main font-semibold mb-3 text-sm">Government Services</h3>
+      <ul class="space-y-2 text-xs md:text-sm">
+        <li><a href="#" class="hover:text-main transition">Department of Justice</a></li>
+        <li><a href="#" class="hover:text-main transition">State Congress</a></li>
+        <li><a href="#" class="hover:text-main transition">Executive Orders</a></li>
+        <li><a href="#" class="hover:text-main transition">Law Library</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-main font-semibold mb-3 text-sm">Contact &amp; Links</h3>
+      <ul class="space-y-2 text-xs md:text-sm">
+        <li><a href="#" class="hover:text-main transition">Law Discord</a></li>
+        <li><a href="#" class="hover:text-main transition">Dynasty Main Discord</a></li>
+        <li><a href="#" class="hover:text-main transition">Dynasty Portal</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-center text-[11px] text-gray-500 mt-8">
+    © 2025 Project Dynasty • State of San Andreas – All Rights Reserved.
+  </p>
+</footer>
+
+<!-- ================== JS LOGIKA ================== -->
+<script>
+  // --- Plné HTML texty zákonů (detail) ---
+  const lawHtml = {
+    wla: `
+      <article class="glass rounded-2xl p-6 md:p-7 shadow-glass animate-fadeSlide">
+        <header class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h2 class="font-serif text-2xl md:text-3xl text-main">
+              SAN ANDREAS WEAPON LICENSING ACT (2025)
+            </h2>
+            <p class="text-sm text-gray-400">
+              Zákon o držení, vydávání a odebrání zbrojních licencí
+            </p>
+          </div>
+          <div class="text-[11px] text-gray-400 md:text-right space-y-0.5">
+            <p><span class="text-gray-500">Navrhl:</span> Head Representative Artur Morgan</p>
+            <p><span class="text-gray-500">Schválil a podepsal:</span> Governor Edward Langford, J.D., M.A.</p>
+            <p><span class="text-gray-500">Dne:</span> 15. 11. 2025</p>
+          </div>
+        </header>
+
+        <div class="text-sm leading-relaxed space-y-6">
+          <p class="text-gray-300 italic">
+            (Zákon o držení, vydávání a odebrání zbrojních licencí)
+          </p>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK I. – ÚČEL ZÁKONA</h3>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>Tento zákon upravuje pravidla pro vydávání, kontrolu, držení a odebrání zbrojních licencí na území státu San Andreas.</li>
+              <li>Cílem je zajistit bezpečné zacházení se střelnými zbraněmi a předejít jejich zneužití.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK II. – DRUHY ZBROJNÍCH LICENCÍ</h3>
+            <ol class="list-decimal list-inside space-y-3 text-gray-200">
+              <li>
+                <span class="font-semibold">Class A – Basic Firearm License</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>Pistole, revolvery</li>
+                  <li>Zbraně do velikosti compact</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Class B – Extended Firearm License</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>Pistole, revolvery</li>
+                  <li>Lovecké brokovnice</li>
+                  <li>Civilní samonabíjecí pušky</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Class C – Tactical License</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>SMG, karabiny, PCC</li>
+                  <li>Pouze pro security a policejní rezervy</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Class D – Professional / Security License</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>Ozbrojená ochranka</li>
+                  <li>Firemní bezpečnostní agentury</li>
+                </ul>
+              </li>
+              <li>
+                <span class="font-semibold">Class E – Business License (pro prodej zbraní)</span>
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>držitel je oprávněn prodávat střelné zbraně a munici</li>
+                  <li>pod pokročilým dozorem DOJ &amp; BLP</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK III. – PODMÍNKY PRO ZÍSKÁNÍ LICENCE</h3>
+            <p class="text-gray-200 mb-2">Žadatel musí:</p>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>být starší 21 let (Class A–B),</li>
+              <li>být starší 23 let (Class C–D),</li>
+              <li>mít čistý trestní rejstřík (žádné Felony / Domestic Violence),</li>
+              <li>projít psychologickým screeningem,</li>
+              <li>projít střeleckou zkouškou,</li>
+              <li>uvést důvod držení zbraně (self-defense / business / sport).</li>
+            </ol>
+            <p class="text-gray-200 mt-2">
+              Zbrojní průkaz se vydává na <strong>jméno žadatele</strong>, je nepřenosný.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IV. – PROCES VYDÁNÍ LICENCE</h3>
+            <ol class="list-decimal list-inside space-y-2 text-gray-200">
+              <li>
+                Žádost se podává v
+                <span class="font-mono text-xs align-middle">&lt;#1439226182368366693&gt;</span>
+                nebo oficiálním formuláři DOJ.
+              </li>
+              <li>
+                Department of Justice provede:
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>Background Check (LSPD/LSSD),</li>
+                  <li>kontrolu zaměstnání,</li>
+                  <li>psychologické posouzení,</li>
+                  <li>zkoušku bezpečné manipulace.</li>
+                </ul>
+              </li>
+              <li>
+                V případě schválení DOJ vydá licenci ve formátu:
+                <br />
+                <span class="font-mono bg-[#1d2033] px-2 py-0.5 rounded text-xs">SA-WL-XXX</span>
+                <br class="mb-1" />
+                kde:
+                <ul class="list-disc list-inside ml-4 mt-1 text-gray-300">
+                  <li>SA – stát San Andreas</li>
+                  <li>WL – Weapon License</li>
+                  <li>XXXX – pořadové číslo</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK V. – POVINNOSTI DRŽITELE LICENCE</h3>
+            <p class="text-gray-200 mb-2">Držitel je povinen:</p>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>nosit zbraň skrytě, pokud není uvedeno jinak,</li>
+              <li>oznámit ztrátu nebo krádež zbraně do 24 hodin,</li>
+              <li>při kontaktu s PD/SD sdělit, že je ozbrojen,</li>
+              <li>mít licenci u sebe při nošení zbraně,</li>
+              <li>nepoužívat zbraň pod vlivem alkoholu nebo drog,</li>
+              <li>zbraň bezpečně ukládat doma i v autě.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VI. – OMEZENÉ A ZAKÁZANÉ ZBRANĚ</h3>
+            <p class="text-gray-200 mb-2">Zakazuje se držení:</p>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>plně automatických zbraní (Full-Auto),</li>
+              <li>vojenských pušek (Assault Rifle),</li>
+              <li>těžkých zbraní (LMG, HMG),</li>
+              <li>výbušnin, granátů, Molotovů, C4,</li>
+              <li>tlumičů bez speciálního povolení DOJ.</li>
+            </ol>
+            <p class="text-gray-200 mt-2">
+              Tyto typy jsou povoleny pouze pro PD/SD/SAHP/USMS/USSS.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VII. – KONTROLA A DOZOR</h3>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>Kontrolu držitelů provádí DOJ ve spolupráci s LSPD/LSSD/SAHP.</li>
+              <li>Ozbrojené složky mohou při podezření zadržet zbraň do objasnění.</li>
+              <li>Prodejci zbraní podléhají pravidelným kontrolám (Class E).</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VIII. – ODEBRÁNÍ LICENCE</h3>
+            <p class="text-gray-200 mb-2">Licence se odebere pokud:</p>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>držitel spáchá násilný trestný čin,</li>
+              <li>je obviněn z Felony,</li>
+              <li>je přistižen s alkoholem nebo drogami při nošení zbraně,</li>
+              <li>poruší podmínky zákona,</li>
+              <li>DOJ shledá ohrožení veřejné bezpečnosti.</li>
+            </ol>
+            <p class="text-gray-200 mt-2">
+              Policie může dočasně odebrat zbraň, DOJ rozhoduje o licenci.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IX. – POVINNOSTI OBCHODNÍKŮ (CLASS E)</h3>
+            <p class="text-gray-200 mb-2">Prodejce musí:</p>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>vést evidenci všech prodejů,</li>
+              <li>hlásit podezřelé nákupy DOJ,</li>
+              <li>prodávat pouze licencovaným osobám,</li>
+              <li>umožnit kontrolu skladu DOJ/PD/SD.</li>
+            </ol>
+            <p class="text-gray-200 mt-2">
+              Nedodržení vede k pokutě až 500 000 $, uzavření provozovny nebo odebrání licence.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK X. – TRESTY</h3>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>Držení zbraně bez platné licence – až 150 000 $ + zadržení.</li>
+              <li>Zneužití zbraně – dle Penal Code (Felony).</li>
+              <li>Neoznámení ztráty – až 50 000 $.</li>
+              <li>Porušení zákona během nošení – odebrání licence + sankce.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK XI. – ÚČINNOST</h3>
+            <ol class="list-decimal list-inside space-y-1 text-gray-200">
+              <li>Tento zákon vstupuje v platnost dnem podpisu Guvernéra.</li>
+              <li>Ruší veškeré předchozí předpisy o zbrojních licencích.</li>
+            </ol>
+            <p class="text-main font-semibold mt-4">
+              KONEC ZÁKONA
+            </p>
+          </section>
+        </div>
+      </article>
+    `,
+    court: `
+      <article class="glass rounded-2xl p-6 md:p-7 shadow-glass animate-fadeSlide">
+        <header class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h2 class="font-serif text-2xl md:text-3xl text-main">
+              SAN ANDREAS COURT PROCEDURE ACT (2025)
+            </h2>
+            <p class="text-sm text-gray-400">
+              Zákon o soudních řízeních a procesních pravidlech státních soudů
+            </p>
+          </div>
+          <div class="text-[11px] text-gray-400 md:text-right space-y-0.5">
+            <p><span class="text-gray-500">Navrhl:</span> Head Representative Artur Morgan</p>
+            <p><span class="text-gray-500">Schválil a podepsal:</span> Governor Edward Langford, J.D., M.A.</p>
+            <p><span class="text-gray-500">Dne:</span> 15. 11. 2025</p>
+          </div>
+        </header>
+
+        <div class="text-sm leading-relaxed space-y-6">
+          <p class="text-gray-300 italic">
+            (Zákon o soudních řízeních a procesních pravidlech státních soudů)
+          </p>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK I. – ÚČEL ZÁKONA</h3>
+            <ol class="list-decimal ml-6 space-y-1">
+              <li>Tento zákon stanovuje závazné postupy pro soudní řízení před soudy státu San Andreas.</li>
+              <li>Cílem je zajistit spravedlivé, rychlé a transparentní řízení pro všechny strany.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK II. – PODÁNÍ K SOUDU</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>
+                Návrh, žaloba nebo žádost se podává prostřednictvím:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>oficiálního formuláře v kanálu,</li>
+                  <li>nebo zasláním dokumentu do <strong>Office of the Supreme Court</strong>.</li>
+                </ul>
+              </li>
+              <li>
+                Podání musí obsahovat:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>jméno a identifikaci navrhovatele,</li>
+                  <li>popis věci,</li>
+                  <li>právní důvody,</li>
+                  <li>požadovaný výsledek,</li>
+                  <li>důkazy nebo seznam důkazů.</li>
+                </ul>
+              </li>
+              <li>
+                Formát dokumentů:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>PDF / TEXT,</li>
+                  <li>jasně strukturované, čitelné a bez úprav během řízení.</li>
+                </ul>
+              </li>
+              <li>Nepřesná nebo neúplná podání mohou být odmítnuta.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK III. – PŘIDĚLENÍ PŘÍPADU</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Každý případ je přidělen soudci podle rozvrhu práce, který stanoví Chief Justice.</li>
+              <li>Soudce je povinen:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>oznámit převzetí případu,</li>
+                  <li>určit procesní plán (lhůty, jednání, podání),</li>
+                  <li>zapsat případ do registru &lt;#1439225797599559731&gt;.</li>
+                </ul>
+              </li>
+              <li>Strany jsou povinny sledovat komunikaci uvedenou soudcem.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IV. – PROCESNÍ LHŮTY</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Soudce stanoví lhůty na:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>odpověď na žalobu,</li>
+                  <li>předložení důkazů,</li>
+                  <li>námitky a doplnění.</li>
+                </ul>
+              </li>
+              <li>Standardní lhůta je 48 hodin, pokud soudce nerozhodne jinak.</li>
+              <li>Ignorování lhůt může být považováno za procesní pochybení.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK V. – DŮKAZY</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Důkazy musí být:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>pravdivé,</li>
+                  <li>neměnitelné,</li>
+                  <li>relevantní k případu.</li>
+                </ul>
+              </li>
+              <li>Přípustné důkazy:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>videozáznam, audiozáznam, fotografie,</li>
+                  <li>svědecké výpovědi,</li>
+                  <li>dokumenty a logy.</li>
+                </ul>
+              </li>
+              <li>Zakázané důkazy:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>upravené nebo při hraní manipulované materiály,</li>
+                  <li>anonymní podání bez ověření.</li>
+                </ul>
+              </li>
+              <li>Soudce rozhoduje o přípustnosti důkazů.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VI. – JEDNÁNÍ A POJEDNÁVÁNÍ</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Jednání se provádí v soudní síni nebo prostřednictvím oficiálního hlasového kanálu.</li>
+              <li>Pravidla chování:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>zákaz křiku, přerušování soudce, urážek,</li>
+                  <li>advokáti mluví pouze na vyzvání,</li>
+                  <li>strany se oslovují formálně („Vaše ctihodnosti“).</li>
+                </ul>
+              </li>
+              <li>Jednání může být:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>veřejné,</li>
+                  <li>neveřejné – v případě bezpečnostních rizik.</li>
+                </ul>
+              </li>
+              <li>Policie (LSPD/LSSD/SAHP) zajišťuje pořádek v síni.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VII. – ROLE SOUDCE</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Soudce vede řízení, rozhoduje o důkazech a vynáší rozsudek.</li>
+              <li>Soudce má právo:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>uklidnit soudní síň,</li>
+                  <li>vykázat osobu narušující řízení,</li>
+                  <li>uložit procesní sankci,</li>
+                  <li>pozastavit jednání.</li>
+                </ul>
+              </li>
+              <li>Nesmí:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>zasahovat do přípravy stran,</li>
+                  <li>rozhodovat pod tlakem jiné složky,</li>
+                  <li>ignorovat lhůty bez odůvodnění.</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VIII. – VYHLÁŠENÍ ROZSUDKU</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Rozsudek může být:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>Guilty / Not Guilty (Criminal),</li>
+                  <li>Granted / Denied (Civil),</li>
+                  <li>Affirmed / Reversed (Appeal).</li>
+                </ul>
+              </li>
+              <li>Musí obsahovat:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>právní odůvodnění,</li>
+                  <li>použitou legislativu,</li>
+                  <li>rozhodnutí o nákladech řízení.</li>
+                </ul>
+              </li>
+              <li>Rozsudek se zveřejňuje v &lt;#1439225810107109539&gt;.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IX. – ODVOLÁNÍ</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Strana má právo požádat o odvolání do 48 hodin od rozsudku.</li>
+              <li>Odvolání posuzuje:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>Supreme Court (u nižších soudů),</li>
+                  <li>jiný soudce stejné úrovně, pokud jde o menší případ.</li>
+                </ul>
+              </li>
+              <li>Odvolací řízení může být:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>potvrzení rozsudku,</li>
+                  <li>zrušení,</li>
+                  <li>vrácení k novému projednání.</li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK X. – KÁZEŇSKÉ OPATŘENÍ</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Soudce může uložit sankce za narušování řízení:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>pokutu,</li>
+                  <li>vykázání,</li>
+                  <li>zadržení (ve spolupráci s PD/SD).</li>
+                </ul>
+              </li>
+              <li>Advokát může být po určitém chování předán Bar Association.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK XI. – ÚČINNOST</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Tento zákon nabývá účinnosti dnem podpisu Guvernéra.</li>
+              <li>Ruší veškeré starší interní soudní postupy.</li>
+            </ol>
+            <p class="text-main font-semibold mt-4">KONEC ZÁKONA</p>
+          </section>
+        </div>
+      </article>
+    `,
+    succession: `
+      <article class="glass rounded-2xl p-6 md:p-7 shadow-glass animate-fadeSlide">
+        <header class="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h2 class="font-serif text-2xl md:text-3xl text-main">
+              SAN ANDREAS GUBERNATORIAL SUCCESSION ACT
+            </h2>
+            <p class="text-sm text-gray-400">
+              Zákon o nástupnictví guvernéra státu San Andreas
+            </p>
+          </div>
+          <div class="text-[11px] text-gray-400 md:text-right space-y-0.5">
+            <p><span class="text-gray-500">Navrhl:</span> Head Representative Artur Morgan</p>
+            <p><span class="text-gray-500">Schválil a podepsal:</span> Governor Edward Langford, J.D., M.A.</p>
+            <p><span class="text-gray-500">Dne:</span> 15. 11. 2025</p>
+          </div>
+        </header>
+
+        <div class="text-sm leading-relaxed space-y-6">
+          <p class="text-gray-300 italic">
+            (Zákon o nástupnictví guvernéra státu San Andreas)
+          </p>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK I. – ÚČEL ZÁKONA</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Tento zákon stanoví závazné pořadí nástupnictví v případě, že úřad Guvernéra nemůže být vykonáván.</li>
+              <li>Cílem je zajistit nepřerušené fungování výkonné moci státu.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK II. – OKAMŽITÉ UVOLNĚNÍ ÚŘADU</h3>
+            <p class="text-gray-200 mb-2">Úřad Guvernéra se považuje za uvolněný, pokud:</p>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Guvernér zemře,</li>
+              <li>rezignuje,</li>
+              <li>je odvolán impeachmentem,</li>
+              <li>je dlouhodobě nezpůsobilý vykonávat funkci (více než 72 hodin),</li>
+              <li>ztratí způsobilost nebo je nezvěstný.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK III. – LINIE NÁSTUPNICTVÍ</h3>
+            <p class="text-gray-200 mb-2">V případě uvolnění úřadu Guvernéra funkci přebírá osoba v následujícím pořadí:</p>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li><strong>Lieutenant Governor</strong></li>
+              <li><strong>Speaker of the State Congress</strong></li>
+              <li><strong>Attorney General</strong></li>
+              <li><strong>Secretary of State</strong></li>
+              <li><strong>Secretary of Finance</strong></li>
+              <li><strong>Secretary of Public Safety</strong></li>
+              <li><strong>nejstarší člen State Congressu podle délky mandátu</strong></li>
+            </ol>
+            <p class="text-gray-300 mt-2">
+              Toto pořadí je závazné a nelze jej měnit interním rozhodnutím.
+            </p>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IV. – PŘEVZETÍ ÚŘADU</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Osoba, která je nejvýše v pořadí, se okamžitě stává <strong>Acting Governor</strong>.</li>
+              <li>Acting Governor skládá přísahu do 24 hodin.</li>
+              <li>Acting Governor má plné pravomoci Guvernéra do konání mimořádných voleb.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK V. – MIMOŘÁDNÉ VOLBY</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Pokud byl úřad uvolněn trvale (smrt, rezignace, impeachment), musí být do 14 dnů vyhlášeny mimořádné volby.</li>
+              <li>Acting Governor vykonává úřad až do zvolení nového Guvernéra.</li>
+              <li>Pokud byl úřad uvolněn dočasně (nemoc, nezvěstnost), Acting Governor vykonává úřad do návratu Guvernéra.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VI. – NÁSTUPNICTVÍ PRO LIEUTENANT GOVERNORA</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Pokud Lieutenant Governor přebírá místo Guvernéra, pozice Lt. Governor zůstává prázdná.</li>
+              <li>Nového Lieutenant Governora jmenuje Acting Governor po konzultaci se State Congressem.</li>
+              <li>Jmenovaná osoba musí být potvrzena nadpoloviční většinou Congressu.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VII. – NÁSTUPNICTVÍ PRO SPEAKERA</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Pokud Speaker převezme úřad Guvernéra nebo Lieutenant Guvernéra, jeho pozice se automaticky uvolní.</li>
+              <li>State Congress musí zvolit nového Speakera do 48 hodin.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK VIII. – PRAVOMOCI ACTING GOVERNORA</h3>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-200">
+              <li>Acting Governor má všechny pravomoci Guvernéra s výjimkou:
+                <ul class="list-disc ml-6 mt-1 text-gray-300">
+                  <li>nemůže měnit linii nástupnictví,</li>
+                  <li>nemůže odvolat více než 2 členy vlády bez souhlasu Congressu,</li>
+                  <li>nemůže měnit volební zákony.</li>
+                </ul>
+              </li>
+              <li>Ostatní pravomoci vykonává plnohodnotně.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h3 class="text-main font-semibold text-base mb-2">ČLÁNEK IX. – ÚČINNOST</h3>
+            <ol class="list-decimal ml-6 space-y-1 text-gray-200">
+              <li>Tento zákon nabývá účinnosti dnem podpisu Guvernéra.</li>
+              <li>Všechny předchozí akty nástupnictví jsou tímto zrušeny.</li>
+            </ol>
+            <p class="text-main font-semibold mt-4">KONEC ZÁKONA</p>
+          </section>
+        </div>
+      </article>
+    `
+  };
+
+  // Text pro vyhledávání – strip HTML
+  const lawSearchText = {};
+  for (const key in lawHtml) {
+    lawSearchText[key] = lawHtml[key].replace(/<[^>]*>/g, " ").toLowerCase();
+  }
+
+  let currentLawId = null;
+
+  function openLaw(id) {
+    const detail = document.getElementById("lawDetail");
+
+    // toggle: pokud kliknu na už otevřený zákon → zavřít
+    if (currentLawId === id) {
+      detail.innerHTML = "";
+      currentLawId = null;
+      return;
+    }
+
+    currentLawId = id;
+    detail.innerHTML = lawHtml[id] || "";
+    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  // Filtry a vyhledávání
+  const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+  const searchInput = document.getElementById("lawSearch");
+  const searchButton = document.getElementById("lawSearchButton");
+  const lawCards = Array.from(document.querySelectorAll(".law-card"));
+
+  function applyFilters() {
+    const q = (searchInput.value || "").trim().toLowerCase();
+
+    const activeCategories = filterButtons
+      .filter(btn => btn.dataset.active === "1")
+      .map(btn => btn.dataset.category);
+
+    lawCards.forEach(card => {
+      const lawId = card.dataset.lawId;
+      const category = card.dataset.category;
+
+      let visible = true;
+
+      if (activeCategories.length > 0 && !activeCategories.includes(category)) {
+        visible = false;
+      }
+
+      // Vyhledávání v názvu + popisu + plném textu
+      if (q) {
+        const cardText = card.innerText.toLowerCase();
+        const lawText = lawSearchText[lawId] || "";
+        if (!cardText.includes(q) && !lawText.includes(q)) {
+          visible = false;
+        }
+      }
+
+      card.style.display = visible ? "" : "none";
+    });
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const active = btn.dataset.active === "1" ? "0" : "1";
+      btn.dataset.active = active;
+      applyFilters();
+    });
+  });
+
+  searchButton.addEventListener("click", () => {
+    applyFilters();
+  });
+
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      applyFilters();
+    }
+  });
+</script>
+
 </body>
 </html>
